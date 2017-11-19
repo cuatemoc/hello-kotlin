@@ -1,8 +1,8 @@
-package service
+package app.service
 
-import model.CreateTicketDto
-import model.TicketDto
-import model.UpdateTicketDto
+import app.model.CreateTicketDto
+import app.model.TicketDto
+import app.model.UpdateTicketDto
 import org.springframework.stereotype.Service
 
 @Service

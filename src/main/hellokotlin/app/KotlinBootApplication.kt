@@ -1,10 +1,12 @@
-package boot
+package app
 
 import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
-class KotlinBootApplication
+@EnableAutoConfiguration
+open class KotlinBootApplication
 
 fun main(args: Array<String>) {
     SpringApplication.run(KotlinBootApplication::class.java, *args)

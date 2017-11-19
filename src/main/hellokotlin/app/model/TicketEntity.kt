@@ -1,21 +1,21 @@
-package model
+package app.model
 
 import java.math.BigInteger
 import java.util.*
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
-@Table(name="city")
+@Table(name="tickets")
 data class TicketEntity(
-        @Id val id: Long? = null,
-        val from: Location? = null,
-        val to: Location? = null,
-        val price: Price) {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        val id: Long? = null,
+        val from: String? = null,
+        val to: String? = null,
+        val price: BigInteger? = null) {
 
     @Suppress("unused")
-    private constructor() : this(price = Price(BigInteger.ZERO, Currency.getInstance("USD")))
+    private constructor() : this(price = BigInteger.ZERO)
 
     fun toDto(): TicketDto = TicketDto(
             id = this.id!!,
@@ -45,19 +45,20 @@ data class TicketEntity(
 }
 
 class UpdateTicketDto(
-        val price: Price) {
+        val price: BigInteger? = BigInteger.ZERO) {
 }
 
 class CreateTicketDto(
-        val from: Location? = null,
-        val to: Location? = null,
-        val price: Price){
+        val from: String? = null,
+        val to: String? = null,
+        val price: BigInteger? = BigInteger.ZERO){
+
 }
 
 data class TicketDto(
         @Id val id: Long? = null,
-        val from: Location? = null,
-        val to: Location? = null,
-        val price: Price) {
+        val from: String? = null,
+        val to: String? = null,
+        val price: BigInteger? = BigInteger.ZERO) {
 
 }
