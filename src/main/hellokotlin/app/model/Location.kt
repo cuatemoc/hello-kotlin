@@ -1,6 +1,10 @@
 package app.model
 
-import javax.persistence.Embeddable
+import javax.persistence.Entity
+import javax.persistence.Id
 
-@Embeddable
-data class Location(val title: String)
+@Entity
+data class Location(
+        @Id
+        val id: Int? = null,
+        val title: String)

@@ -10,7 +10,7 @@ class CommonControllers {
 
     @GetMapping("/hello")
     fun hello(): String {
-        return "Hello from Kotlin"
+        return "Hello fromLocation Kotlin"
     }
 
     @PostMapping("/squares")

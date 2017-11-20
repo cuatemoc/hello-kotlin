@@ -1,7 +1,5 @@
 package app.model
 
-import java.math.BigInteger
-import java.util.*
 import javax.persistence.*
 
 @Entity
@@ -9,32 +7,39 @@ import javax.persistence.*
 data class TicketEntity(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null,
-        val from: String? = null,
-        val to: String? = null,
-        val price: BigInteger? = null) {
+        val id: Int? = null,
+
+        @OneToOne
+        @JoinColumn(name = "fromLocation")
+        val fromLocation: Location? = null,
+
+        @OneToOne
+        @JoinColumn(name = "toLocation")
+        val toLocation: Location? = null,
+
+        val price: Price? = null) {
 
     @Suppress("unused")
-    private constructor() : this(price = BigInteger.ZERO)
+    private constructor() : this(price = Price())
 
     fun toDto(): TicketDto = TicketDto(
             id = this.id!!,
-            from = this.from,
-            to = this.to,
+            fromLocation = this.fromLocation,
+            toLocation = this.toLocation,
             price = this.price)
 
     companion object {
 
         fun fromDto(dto: TicketDto) = TicketEntity(
                 id = dto.id!!,
-                from = dto.from,
-                to = dto.to,
+                fromLocation = dto.fromLocation,
+                toLocation = dto.toLocation,
                 price = dto.price
                 )
 
         fun fromDto(dto: CreateTicketDto) = TicketEntity(
-                from = dto.from,
-                to = dto.to,
+                fromLocation = dto.fromLocation,
+                toLocation = dto.toLocation,
                 price = dto.price)
 
         fun fromDto(dto: UpdateTicketDto, defaultCity: TicketEntity) = TicketEntity(
@@ -45,20 +50,20 @@ data class TicketEntity(
 }
 
 class UpdateTicketDto(
-        val price: BigInteger? = BigInteger.ZERO) {
+        val price: Price? = Price()) {
 }
 
 class CreateTicketDto(
-        val from: String? = null,
-        val to: String? = null,
-        val price: BigInteger? = BigInteger.ZERO){
+        val fromLocation: Location? = null,
+        val toLocation: Location? = null,
+        val price: Price? = Price()){
 
 }
 
 data class TicketDto(
-        @Id val id: Long? = null,
-        val from: String? = null,
-        val to: String? = null,
-        val price: BigInteger? = BigInteger.ZERO) {
+        @Id val id: Int? = null,
+        val fromLocation: Location? = null,
+        val toLocation: Location? = null,
+        val price: Price? = Price()) {
 
 }
