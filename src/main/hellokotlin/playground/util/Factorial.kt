@@ -1,4 +1,4 @@
-package playground
+package playground.util
 
 fun recursiveFactorial(n: Long) : Long {
     return if (n <= 1) {

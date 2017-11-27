@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
 @EnableAutoConfiguration
-open class KotlinBootApplication
+class KotlinBootApplication
 
 fun main(args: Array<String>) {
     SpringApplication.run(KotlinBootApplication::class.java, *args)

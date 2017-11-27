@@ -1,9 +1,9 @@
 package app.controllers
 
 import org.springframework.web.bind.annotation.*
-import playground.factorial
+import playground.util.factorial
 import playground.functions.mapFunction
-import playground.recursiveFactorial
+import playground.util.recursiveFactorial
 
 @RestController
 class CommonControllers {

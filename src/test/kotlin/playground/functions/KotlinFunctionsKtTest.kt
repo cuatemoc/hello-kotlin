@@ -2,7 +2,7 @@ package playground.functions
 
 import org.hamcrest.Matchers.hasItems
 import org.junit.Assert.assertThat
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import org.mockito.internal.matchers.Equals
 
 class KotlinFunctionsKtTest {
