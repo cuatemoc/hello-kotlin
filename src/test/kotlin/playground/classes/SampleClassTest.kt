@@ -11,8 +11,8 @@ internal class SampleClassTest {
         val propertyValue = "a property"
         val tested = SampleClass(propertyValue)
 
-        assertEquals(tested.someProperty, propertyValue.toUpperCase())
-        assertEquals(tested.otherProperty, "default")
+        assertEquals(propertyValue.toUpperCase(), tested.someProperty)
+        assertEquals("default", tested.otherProperty)
     }
 
     @Test
@@ -22,8 +22,18 @@ internal class SampleClassTest {
         val otherProperty = "another property"
         val tested = SampleClass(propertyValue, otherProperty)
 
-        assertEquals(tested.someProperty, propertyValue.toUpperCase())
-        assertEquals(tested.otherProperty, otherProperty)
+        assertEquals(propertyValue.toUpperCase(), tested.someProperty)
+        assertEquals(otherProperty, tested.otherProperty)
+    }
+
+    @Test
+    fun isTestPropertySet() {
+
+        val propertyValue = "a property"
+        val testPropertyValue = "testProperty"
+        val tested = SampleClass(propertyValue)
+        tested.testProperty = testPropertyValue
+        assertEquals(testPropertyValue.toUpperCase(), tested.testProperty)
     }
 
 }
